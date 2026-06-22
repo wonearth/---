@@ -62,6 +62,17 @@ python opencv_yolo.py
 * Segmentation 모델을 이용하여 Road / Sidewalk 영역 분리
 * 사람의 위치가 차도(Road)인지 인도(Sidewalk)인지 판별
 
+### opencv_yolo_seg1.py
+
+```text
+판단기준:
+person + ROAD + CLOSE + 화면 중앙 → DANGER
+person + ROAD + MID → WARNING
+person + ROAD + FAR → SAFE
+person + SIDEWALK → 대부분 SAFE
+차량/자전거/오토바이 + CLOSE + 화면 중앙 → DANGER
+```
+
 실행:
 
 ```bash
