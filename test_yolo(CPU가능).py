@@ -23,7 +23,12 @@ def main():
     # 학습
     model.train(
         data="coco8.yaml",            # Ultralytics가 제공하는 아주 작은 예제 데이터셋
-        epochs=3
+        epochs=10,              # 데이터셋을 몇 번 반복해서 학습(50,100)
+        imgsz=640,
+        batch=4,                # 한 번에 몇 장씩 학습
+        device=device,
+        workers=0,
+        name="yolo11n_coco8"
     )
 
 
