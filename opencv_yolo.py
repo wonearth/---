@@ -4,7 +4,7 @@ import cv2
 from ultralytics import YOLO
 
 # YOLO 모델 불러오기
-model = YOLO("yolo11n.pt")
+model = YOLO("runs/detect/yolo11n_coco8/weights/best.pt")
 
 # 영상 파일 이름
 video_path = "tokyo.mp4"
@@ -27,11 +27,12 @@ while True:
         frame,
         conf=0.4,
         classes=target_classes,
+        imgsz=320,
         verbose=False
     )
 
     annotated_frame = results[0].plot()
-
+    annotated_frame = cv2.resize(annotated_frame, (960, 540))
     cv2.imshow("YOLO Detection", annotated_frame)
 
     if cv2.waitKey(1) & 0xFF == 27:  # ESC 누르면 종료
